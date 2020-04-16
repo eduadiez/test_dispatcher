@@ -10,6 +10,9 @@ jobs:
     name: Trigger a DAppNodePackage update
     runs-on: ubuntu-latest
     steps:
+    - name: Get the tag
+      id: get_tag
+      run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
     - name: Send dispatch event to DAppNodePackage Repository
       env: 
         DISPATCH_REPO: https://api.github.com/repos/eduadiez/DAppNodePackage-prysm-beacon-chain
@@ -17,7 +20,7 @@ jobs:
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
-        --data '{"event_type":"new_release"}' \
+        --data '{"event_type":"new_release","tag":"${{ steps.get_tag.outputs.TAG }}"}' \
         $DISPATCH_REPO/dispatches
 
 
