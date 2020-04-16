@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Send dispatch event to DAppNodePackage Repository
       env: 
-        DISPATCH_REPO: https://github.com/eduadiez/DAppNodePackage-prysm-beacon-chain
+        DISPATCH_REPO: https://api.github.com/repos/eduadiez/DAppNodePackage-prysm-beacon-chain
       run: |
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
