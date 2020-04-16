@@ -13,14 +13,12 @@ jobs:
     - name: Get the tag
       id: get_tag
       run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
-    - name: Send dispatch event to DAppNodePackage Repository
+    - name: Send dispatch event to DAppNodePackage beacon-chain repository
       env: 
-        DISPATCH_REPO: https://api.github.com/repos/eduadiez/DAppNodePackage-prysm-beacon-chain
+        DISPATCH_REPO: dappnode/DAppNodePackage-prysm-beacon-chain
       run: |
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
         --data '{"event_type":"new_release", "client_payload": { "tag":"${{ steps.get_tag.outputs.TAG }}"}}' \
-        $DISPATCH_REPO/dispatches
-
-
+        https://api.github.com/repos/$DISPATCH_REPO/dispatches
