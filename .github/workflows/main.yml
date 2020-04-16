@@ -14,7 +14,7 @@ jobs:
       env: 
         DISPATCH_REPO: https://github.com/eduadiez/DAppNodePackage-prysm-beacon-chain
       run: |
-        curl -v -X POST -u "${{ secrets.GITHUB_PAT }}" \
+        curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
         --data '{"event_type":"new_release"}' \
