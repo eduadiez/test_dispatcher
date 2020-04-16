@@ -1,0 +1,23 @@
+name: Update DAppNodePackage
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  dappnode-update:
+    name: Trigger a DAppNodePackage update
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send dispatch event to DAppNodePackage Repository
+      env: 
+        DISPATCH_REPO: https://github.com/eduadiez/DAppNodePackage-prysm-beacon-chain
+      run: |
+        curl -v -X POST -u "${{ secrets.GITHUB_PAT }}" \
+        -H "Accept: application/vnd.github.everest-preview+json" \
+        -H "Content-Type: application/json" \
+        --data '{"event_type":"new_version"}' \
+        $DISPATCH_REPO/dispatches
+
+
