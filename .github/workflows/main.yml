@@ -17,7 +17,7 @@ jobs:
         curl -v -X POST -u "${{ secrets.GITHUB_PAT }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
-        --data '{"event_type":"new_version"}' \
+        --data '{"event_type":"new_release"}' \
         $DISPATCH_REPO/dispatches
 
 
