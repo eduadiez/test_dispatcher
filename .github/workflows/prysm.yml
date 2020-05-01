@@ -21,7 +21,7 @@ jobs:
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
-        --data '{"event_type":"new_release", "client_payload": { "tag":"${{ $TAG }}"}}' \
+        --data '{"event_type":"new_release", "client_payload": { "tag":"$TAG"}}' \
         https://api.github.com/repos/$DISPATCH_REPO/dispatches
         
   dappnode-update-validator:
@@ -39,5 +39,5 @@ jobs:
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
-        --data '{"event_type":"new_release", "client_payload": { "tag":"${{ $TAG }}"}}' \
+        --data '{"event_type":"new_release", "client_payload": { "tag":"$TAG"}}' \
         https://api.github.com/repos/$DISPATCH_REPO/dispatches
