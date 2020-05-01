@@ -16,7 +16,7 @@ jobs:
     - name: Send dispatch event to DAppNodePackage-prysm-beacon-chain
       env: 
         DISPATCH_REPO: dappnode/DAppNodePackage-prysm-beacon-chain
-        TAG: 1.0.0-alpha.6
+        TAG: v1.0.0-alpha.6
       run: |
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
@@ -34,7 +34,7 @@ jobs:
     - name: Send dispatch event to DAppNodePackage validator repository
       env: 
         DISPATCH_REPO: dappnode/DAppNodePackage-prysm-validator
-        TAG: 1.0.0-alpha.6
+        TAG: v1.0.0-alpha.6
       run: |
         curl -v -X POST -u "${{ secrets.PAT_GITHUB }}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
